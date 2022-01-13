@@ -7,7 +7,7 @@ ses_client = boto3.client('ses',region_name='us-west-2')
 def lambda_handler(event, context):
     my_list=[('Abyaya', 'Hotta', 123), ('Balakrishna', 'Kompala', 345),
              ('Sathyanarayana', 'Dathrika', 567), ('Praveen', 'Maroju', 631),
-             ('Giridhar', 'Pochareddy', 151)]
+             ('Giridhar', 'Pochareddy', 152)]
     
     print(my_list)
     # # create header
