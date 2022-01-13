@@ -23,7 +23,7 @@ phases:
       - zip -r9 ../deployment_package.zip
       - cd ..
       - zip -g deployment_package.zip lambda_function.py
-  post-build:
+  post_build:
     commands:
       - echo "Uopdating   lambda"
       - aws lambda update-function-code --function-name test_function --zip-file fileb://deployment_package.zip
