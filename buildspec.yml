@@ -1,0 +1,30 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.7
+    commands:
+      - SOURCE_VERSION=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - pip3 install --upgrade pip
+      - pip3 install --upgrade awscli
+      - pip3 install -Iv aws-sam-cli==1.19.1
+      - pip3 install pylint
+      - pip3 install pyspark
+      - pip3 install moto
+      - pip3 install pandas
+      - pip3 install pytest
+      - pip3 install pytest-cov
+      - pip3 install tabulate
+      - pip3 install psycopg2
+  pre_build:
+    commands:
+      - echo "Zipping the packages"
+      - cd lib
+      - zip -r9 ../deployment_package.zip
+      - cd ..
+      - zip -g deployment_package.zip lambda_function.py
+  post-build:
+    commands:
+      - echo "Uopdating   lambda"
+      - aws lambda update-function-code --function-name test_function --zip-file fileb://deployment_package.zip
+      - echo "Done"
