@@ -5,17 +5,17 @@ phases:
       python: 3.7
     commands:
       - SOURCE_VERSION=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - pip3 install --upgrade pip
-      - pip3 install --upgrade awscli
-      - pip3 install -Iv aws-sam-cli==1.19.1
-      - pip3 install pylint
-      - pip3 install pyspark
-      - pip3 install moto
-      - pip3 install pandas
-      - pip3 install pytest
-      - pip3 install pytest-cov
-      - pip3 install tabulate
-      - pip3 install psycopg2
+      - pip3 install --upgrade pip -t lib
+      - pip3 install --upgrade awscli -t lib
+      - pip3 install -Iv aws-sam-cli==1.19.1 -t lib
+      - pip3 install pylint -t lib
+      - pip3 install pyspark -t lib
+      - pip3 install moto -t lib
+      - pip3 install pandas -t lib
+      - pip3 install pytest -t lib
+      - pip3 install pytest-cov -t lib
+      - pip3 install tabulate -t lib
+      - pip3 install psycopg2 -t lib
   pre_build:
     commands:
       - echo "Zipping the packages"
