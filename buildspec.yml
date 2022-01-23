@@ -2,7 +2,8 @@ version: 0.1
 phases:
   install:
     commands:
-      aws cloudformation package --s3-bucket git-repo-sam --template-file sam_Template.yml --output-template-file template-generated.yml --capabilities CAPABILITY_NAMED_IAM
+      aws cloudformation package --s3-bucket git-repo-sam --template-file sam_Template.yml --output-template-file template-generated.yml
+
 artifacts:
   type: zip
   files:
